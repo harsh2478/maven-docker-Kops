@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: spring-boot-app
-        image: kanha05/java-web-app:replaceImageTag
+        image: kanha05/java-web-app:15
         ports:
         - containerPort: 8080
