@@ -107,7 +107,7 @@ pipeline{
          success {
               echo "The job ran successfully"
          }
-         nstable {
+         unstable {
               echo "Gear up ! The build is unstable. Try to fix it"
          }
          failure {
