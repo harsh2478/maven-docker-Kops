@@ -42,7 +42,7 @@ pipeline{
         
         stage("QAT Testing"){
             steps{
-                retry(20){
+                retry(30){
                     sh "curl --silent http://35.93.32.230:${BUILD_NUMBER}/ |  grep KOPS "
                 }
             }
