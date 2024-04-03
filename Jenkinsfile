@@ -100,19 +100,4 @@ pipeline{
 	}
     }
     
-    post {
-         always {
-             echo "Hey from Jenkins"
-         }
-         success {
-              echo "The job ran successfully"
-         }
-         unstable {
-              echo "Gear up ! The build is unstable. Try to fix it"
-         }
-         failure {
-             echo "OMG ! The build failed"
-             
-         }
-     }
 }
