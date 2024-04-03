@@ -90,9 +90,9 @@ pipeline{
 	stage("Deploying in Production ") {
             steps{
                 sshagent(['IAM_harsh']) {
-                    sh "ssh -o  StrictHostKeyChecking=no ec2-user@54.218.229.181 sudo wget https://raw.githubusercontent.com/harsh2478/maven-docker-Kops/main/deployment.yml"
+                    sh "ssh -o  StrictHostKeyChecking=no ec2-user@54.218.229.181 sudo sh -c 'curl https://raw.githubusercontent.com/harsh2478/maven-docker-Kops/main/deployment.yml'"
                     sh "ssh ec2-user@54.218.229.181 sudo kubectl  apply -f deployment.yml"
-		    sh "ssh ec2-user@54.218.229.181 sudo wget https://raw.githubusercontent.com/harsh2478/maven-docker-Kops/main/service.yml"
+		    sh "ssh ec2-user@54.218.229.181  sudo sh -c 'curl https://raw.githubusercontent.com/harsh2478/maven-docker-Kops/main/service.yml > service.yml'"
 		    sh "ssh ec2-user@54.218.229.181 sudo kubectl  apply -f service.yml"
 		}
 	    }
@@ -107,7 +107,7 @@ pipeline{
          success {
               echo "The job ran successfully"
          }
-         unstable {
+         nstable {
               echo "Gear up ! The build is unstable. Try to fix it"
          }
          failure {
