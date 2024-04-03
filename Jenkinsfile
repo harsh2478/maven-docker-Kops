@@ -35,7 +35,7 @@ pipeline{
         stage("Deploying site in QAT"){
             steps{
                 sshagent(['IAM_harsh']) {
-                    sh "ssh -o StrictHostKeyChecking=no ec2-user@35.93.32.230 sudo docker run -dit --name TestingApp-${BUILD_NUMBER} -p ${BUILD_NUMBER}:8080  kanha05/java-web-app:${BUILD_NUMBER} "
+                    sh "ssh -o StrictHostKeyChecking=no ec2-user@35.86.117.178 sudo docker run -dit --name TestingApp-${BUILD_NUMBER} -p ${BUILD_NUMBER}:8080  kanha05/java-web-app:${BUILD_NUMBER} "
                 }
             }
         }
@@ -43,7 +43,7 @@ pipeline{
         stage("QAT Testing"){
             steps{
                 retry(30){
-                    sh "curl --silent http://35.93.32.230:${BUILD_NUMBER}/ |  grep KOPS "
+                    sh "curl --silent http://35.86.117.178:${BUILD_NUMBER}/ |  grep KOPS "
                 }
             }
         }
