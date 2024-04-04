@@ -92,7 +92,7 @@ pipeline{
                 sshagent(['IAM_harsh']) {
                     sh "ssh -o  StrictHostKeyChecking=no ec2-user@18.236.190.249 wget https://raw.githubusercontent.com/harsh2478/maven-docker-Kops/main/deployment.yml"
                     sh "ssh ec2-user@18.236.190.249 sudo kubectl  apply -f deployment.yml"
-		    sh "ssh ec2-user@18.236.190.249 'wget https://raw.githubusercontent.com/harsh2478/maven-docker-Kops/main/service.yml"
+		    sh "ssh ec2-user@18.236.190.249 wget https://raw.githubusercontent.com/harsh2478/maven-docker-Kops/main/service.yml"
 		    sh "ssh ec2-user@18.236.190.249 sudo kubectl  apply -f service.yml"
 		}
 	    }
